@@ -17,9 +17,15 @@ namespace WebApi1.Controllers
         }
 
         [HttpGet("GetT",Name = "GetT")]   
-        public string GetTitle()
+        public NewsUpdate GetTitle()
         {
-            return _stringLocalizer["Hello"];//["About Title"];
+            var n = new NewsUpdate
+            {
+                Id = 3,
+                Headline = _stringLocalizer["headline"],
+                Detail = _stringLocalizer["detail"]
+            };            
+            return n;
         }
 
         /* public IActionResult Index()
