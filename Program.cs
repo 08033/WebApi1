@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using WebApi1.Models;
+using WebApi1.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,9 @@ builder.Services.Configure<RequestLocalizationOptions>(options =>
     options.SupportedCultures = supportedCultures;
     options.SupportedUICultures = supportedCultures;
 });
+
+builder.Services.Configure<FamilyTreeDatabaseSettings>(builder.Configuration.GetSection("FamilyTreeDatabase"));
+builder.Services.AddSingleton<FamilyTreeService>();
 
 
 var app = builder.Build();
