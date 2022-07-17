@@ -16,5 +16,7 @@ namespace WebApi1.Services
         }
 
         public async Task<List<Member>> GetAsync() => await _membersCollection.Find(_ => true).ToListAsync();
+
+        public async Task CreateAsync(Member _member)=>await _membersCollection.InsertOneAsync(_member);
     }
 }

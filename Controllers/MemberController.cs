@@ -23,5 +23,12 @@ namespace WebApi1.Controllers
         [HttpGet]
         public async Task<List<Member>> Get() => await _familyTreeService.GetAsync();
 
+        [HttpPost]
+
+        public async Task<IActionResult> Post(Member member)
+        {
+            await _familyTreeService.CreateAsync(member);
+            return CreatedAtAction(nameof(Post), new { id = member.Id }, member);
+        }
     }
 }
